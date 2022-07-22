@@ -1,3 +1,15 @@
+let operacao = 'A';
+
+function add() {
+    if (operacao == 'A') {
+        return Adicionar();
+    }
+    else {
+        return Editar();
+
+    }
+}
+
 function Adicionar() {
     let usuario = {
         nome: document.querySelector('#txtNome').value,
@@ -15,15 +27,6 @@ function Adicionar() {
         return true;
     }
 }
-function add() {
-    if (operacao == 'A') {
-        return Adicionar();
-    }
-    else {
-        return Editar();
-
-    }
-}
 
 function cleantext() {
     document.querySelector("#txtNome").value = '';
@@ -33,11 +36,12 @@ function cleantext() {
 function handleEditar(e) {
     operacao = "E";
     indice_selecionado = parseInt(e.getAttribute("alt"));
-    let users = JSON.parse(localStorage.getItem('usuarios'));
-    let user = users[indice_selecionado];
+
+    let user = usuarios[indice_selecionado];
 
     document.querySelector("#txtNome").value = user.nome;
     document.querySelector("#txtEmail").value = user.email;
+
     let modal = document.getElementById('cadastrados-modal');
     if (typeof modal == 'undefined' || modal === null)
         return;
@@ -46,19 +50,20 @@ function handleEditar(e) {
 }
 
 function Editar() {
-    let users = JSON.parse(localStorage.getItem('usuarios'));
+    //let users = JSON.parse(localStorage.getItem('usuarios'));
 
     const userAtualizado = {
         nome: document.querySelector("#txtNome").value,
         email: document.querySelector("#txtEmail").value
     }
 
-    users[indice_selecionado] = userAtualizado;
-    localStorage.setItem('usuarios', JSON.stringify(users));
-    alert('Usuario atualizado');
-    operacao = 'A';
-    closeModal('cadastrados-modal');
+    usuarios[indice_selecionado] = userAtualizado;
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
+    alert('Usuario atualizado');
+
+    operacao = 'A';
+    cleantext();
 }
 
 function listar() {
@@ -80,16 +85,13 @@ function listar() {
     }
     tbody.innerHTML = linhas;
 }
+
 document.querySelector('#modal-cadastrados').addEventListener('click', function (e) {
     listar();
-}) 
+})
 
 function deletar(indice) {
     usuarios.splice(indice, 1);
-    if (usuarios.length == 0) {
-        localStorage.removeItem('usuarios');
-        return;
-    }
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 }
 

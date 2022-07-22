@@ -1,4 +1,3 @@
-let operacao = 'A';
 var usuarios=JSON.parse(localStorage.getItem('usuarios'));
 let resultSorteio = [];
 
@@ -58,4 +57,19 @@ window.onload = function setarLocalStorage(){
     if(localStorage.getItem('usuarios') == null){
         localStorage.setItem('usuarios',JSON.stringify(usuarios))
     }
+}
+
+function reset() {
+    let sbody = document.querySelector('.modal-body-resultado');
+    sbody.innerHTML = ``;
+
+    localStorage.clear();
+    closeModal('resultado-modal');
+    closeModal('cadastrados-modal');
+    
+    let tbody = document.querySelector('#tblListar tbody');
+    tbody.innerHTML = ``;
+
+    resultSorteio = [];
+    usuarios = [];
 }
