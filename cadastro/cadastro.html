@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSSreset.css">
+    <link rel="stylesheet" href="../cadastro/style/Cadastro.css">
+    <link rel="preload" href="../cadastro/style/Cadastro.css">
+    <title> Amigo Secreto Loopis</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="../index.html"> <h1 > Amigo Secreto Loopis </h1> </a>
+    </header>
+
+    <div class="formulario">
+        <form id="frmCadastro">
+            <label for="fname">Nome</label><br>
+            <input type="text" id="txtNome" class="text-box" name="nome" placeholder="Insira seu Nome"><br>
+            <span id="name-validation"></span>
+            <label for="femail">E-mail</label><br>
+            <input type="email" id="txtEmail" class=" text-box" name="email" placeholder="Insira seu E-mail"><br>
+            <span id="mail-validation"></span>
+            <input type="button" class="btn" value="Cadastrar" id="modal-cadastro" onclick="add()">
+            <input type="button" class="btn" value="Lista de Cadastrados" id="modal-cadastrados" onclick="openModal('cadastrados-modal');">
+        </form>
+
+        <img class="image-cadastro" src="../cadastro/style/imagens/imagem-cadastro.jpg" alt="Pessoas Festejando">
+
+    </div>
+
+    <div id="cadastro-modal" class="modal">
+        <div class="modal-content">
+            
+            <div class="modal-head">
+                <span class="close" id="closeModal" onclick="closeModal('cadastro-modal');cleantext()">&times;</span>
+                <h3 class="modal-title">AMIGO SECRETO LOOPIS</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Cadastro realizado com sucesso</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('cadastro-modal');cleantext()">Retornar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cadastrados-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-head">
+                <span class="close" id="closeModal" onclick="closeModal('cadastrados-modal')">&times;</span>
+                <h3 class="modal-title">AMIGO SECRETO LOOPIS</h3>
+            </div>
+            <div class="modal-body">
+                <p>Veja a lista de cadastrados:</p>
+
+                <table style="text-align: center;" id="tblListar">
+                    <thead>
+                        <th style="width: 60px; background-color: #88aaa869"></th>
+                        <th>Nome</th>
+                        <th style="width: 300px;">Email</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('cadastrados-modal')">Retornar</button>
+                <input class="btn" type="submit" value="Sortear" id="btnSortear" onclick="closeModal('cadastrados-modal')">
+            </div>
+        </div>
+    </div>
+    <div id="resultado-modal" class="modal">
+        
+        <div class="modal-content">
+            
+            <div class="modal-head">
+                <span class="close" id="closeModal" onclick="reset()">&times;</span>
+                <h3 class="modal-title">RESULTADO DO SORTERIO</h3>
+            </div>
+
+            <div class="modal-body-resultado">
+            </div>
+            
+
+            <div class="modal-footer">
+                <button class="btn" onclick="reset()">Finalizar Sorteio</button>
+            </div>
+        </div>
+    </div>
+    <script src="../cadastro/scripts/sorteio.js"></script>
+    <script src="../cadastro/scripts/modalUtil.js"></script>
+    <script src="../cadastro/scripts/crud.js"></script>
+    <script src="../cadastro/scripts/validacaoNome.js"></script>
+    <script src="../cadastro/scripts/validacaoEmail.js"></script>
+    <script>
+        window.onload = function setarLocalStorage(){
+            var usuarios = [];
+            localStorage.setItem('usuarios',JSON.stringify(usuarios))
+        }
+    </script> 
+</body>
+
+</html>
