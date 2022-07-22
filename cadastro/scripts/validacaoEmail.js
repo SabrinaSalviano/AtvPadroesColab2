@@ -11,6 +11,5 @@ email.onkeyup = function () {
     else {
         mailValidation.innerText = 'Seu email não válido';
         mailValidation.style.color = 'red';
-
     }
 }
