@@ -1,21 +1,14 @@
-let operacao = 'A';
+document.querySelector('#modal-cadastrados').addEventListener('click', function (e) {
+    listar();
+})
 
-function add() {
-    if (operacao == 'A') {
-        return Adicionar();
-    }
-    else {
-        return Editar();
-
-    }
-}
 
 function Adicionar() {
     let usuario = {
         nome: document.querySelector('#txtNome').value,
         email: document.querySelector('#txtEmail').value
     }
-    console.log(usuario)
+
     if (document.querySelector('#txtEmail').value == '' || document.querySelector('#txtNome').value == '') {
         alert('Preencha os campos')
     }
@@ -26,11 +19,6 @@ function Adicionar() {
         openModal('cadastro-modal')
         return true;
     }
-}
-
-function cleantext() {
-    document.querySelector("#txtNome").value = '';
-    document.querySelector("#txtEmail").value = '';
 }
 
 function handleEditar(e) {
@@ -63,7 +51,18 @@ function Editar() {
     alert('Usuario atualizado');
 
     operacao = 'A';
-    cleantext();
+    cleanText();
+}
+
+function handleDeletar(e) {
+    let indice_selecionado = parseInt(e.getAttribute("alt"));
+    deletar(indice_selecionado);
+    listar();
+}
+
+function deletar(indice) {
+    usuarios.splice(indice, 1);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
 }
 
 function listar() {
@@ -84,19 +83,4 @@ function listar() {
 
     }
     tbody.innerHTML = linhas;
-}
-
-document.querySelector('#modal-cadastrados').addEventListener('click', function (e) {
-    listar();
-})
-
-function deletar(indice) {
-    usuarios.splice(indice, 1);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-}
-
-function handleDeletar(e) {
-    let indice_selecionado = parseInt(e.getAttribute("alt"));
-    deletar(indice_selecionado);
-    listar();
 }

@@ -4,12 +4,12 @@ let email = document.getElementById('txtEmail');
 email.onkeyup = function () {
     const regexmail = /\S+@\S+\.\S+/;
     if (regexmail.test(email.value)) {
-        mailValidation.innerText = 'Seu email √© v√°lido';
+        mailValidation.innerText = 'Seu email È valido';
         mailValidation.style.color = 'lime';
 
     }
     else {
-        mailValidation.innerText = 'Seu email n√£o v√°lido';
+        mailValidation.innerText = 'Seu email n„o È valido';
         mailValidation.style.color = 'red';
     }
 }

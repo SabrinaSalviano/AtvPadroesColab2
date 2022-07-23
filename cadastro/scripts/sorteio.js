@@ -1,4 +1,3 @@
-let operacao = 'A';
 let indice_selecionado = -1;
 const frmCadastro = document.getElementById('frmCadastro');
 var usuarios=JSON.parse(localStorage.getItem('usuarios'));

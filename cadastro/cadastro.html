@@ -25,7 +25,7 @@
             <label for="femail">E-mail</label><br>
             <input type="email" id="txtEmail" class=" text-box" name="email" placeholder="Insira seu E-mail"><br>
             <span id="mail-validation"></span>
-            <input type="button" class="btn" value="Cadastrar" id="modal-cadastro" onclick="add()">
+            <input type="button" class="btn" value="Cadastrar" id="modal-cadastro" onclick="Cadastrar()">
             <input type="button" class="btn" value="Lista de Cadastrados" id="modal-cadastrados" onclick="openModal('cadastrados-modal');">
         </form>
 
@@ -37,7 +37,7 @@
         <div class="modal-content">
             
             <div class="modal-head">
-                <span class="close" id="closeModal" onclick="closeModal('cadastro-modal');cleantext()">&times;</span>
+                <span class="close" id="closeModal" onclick="closeModal('cadastro-modal'); cleanText()">&times;</span>
                 <h3 class="modal-title">AMIGO SECRETO LOOPIS</h3>
             </div>
 
@@ -46,7 +46,7 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn" onclick="closeModal('cadastro-modal');cleantext()">Retornar</button>
+                <button class="btn" onclick="closeModal('cadastro-modal');cleanText()">Retornar</button>
             </div>
         </div>
     </div>
@@ -101,7 +101,9 @@
     <script src="../cadastro/scripts/crud.js"></script>
     <script src="../cadastro/scripts/validacaoNome.js"></script>
     <script src="../cadastro/scripts/validacaoEmail.js"></script>
-    <script src="../cadastro/scripts/validaUsusarios.js"></script>
+    <script src="../cadastro/scripts/validaUsuarios.js"></script>
+    <script src="../cadastro/scripts/utilsSistem.js"></script>
+    <script src="../cadastro/scripts/operacaoControl.js"></script>
     <script>
         window.onload = function setarLocalStorage(){
             var usuarios = [];
